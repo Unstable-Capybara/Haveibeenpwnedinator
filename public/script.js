@@ -9,6 +9,14 @@ async function checkEmail() {
 
     resultDiv.innerHTML = "<p>Nous vérifions discrètement en coulisses...</p>";
 
+    // Vérification spécifique pour Guy Liguili
+    if (email.toLowerCase() === 'guy.liguili@goodenough.fr') {
+        // Afficher le résultat spécifique sans appel à l'API
+        displayGuyLiguiliResult();
+        updateStats(email, 5); // Supposons 5 fuites pour l'exemple
+        return;
+    }
+
     try {
         const response = await fetch('/check-email', {
             method: 'POST',
@@ -26,7 +34,7 @@ async function checkEmail() {
                 displayResult(breaches);
                 updateStats(email, breaches.length);
             } else {
-                resultDiv.innerHTML = "<p>🎉 Bonne nouvelle ! Votre adresse e-mail n'apparaît dans aucune fuite de données connue. Continuez à naviguer en toute sérénité !</p>";
+                resultDiv.innerHTML = "<p>🦉 Chouette ! Votre adresse e-mail n'apparaît dans aucune fuite de données connue. Continuez à naviguer en toute sérénité (mais faites quand même attention à comment vous gérez vos mots de passe) !</p>";
                 updateStats(email, 0);
             }
         } else if (response.status === 429) {
@@ -48,7 +56,7 @@ async function checkEmail() {
 
 function displayResult(breaches) {
     const resultDiv = document.getElementById('result');
-    let html = `<h2>😯 Attention ! Votre adresse e-mail est apparue dans <strong>${breaches.length}</strong> fuite(s) de données.</h2>`;
+    let html = `<h2>🪈 Flûte ! Votre adresse e-mail est apparue dans <strong>${breaches.length}</strong> fuite(s) de données.</h2>`;
     html += "<p>Voici les détails :</p>";
     html += "<ul>";
     breaches.forEach(breach => {
@@ -56,13 +64,37 @@ function displayResult(breaches) {
     });
     html += "</ul>";
     html += "<h3>Que se passe-t-il ?</h3>";
-    html += "<p>Cela signifie que vos informations pourraient être accessibles à des personnes mal intentionnées. Mais pas de panique, nous sommes là pour vous guider !</p>";
+    html += "<p>Cela signifie que vos informations ont fait partie du butin de pirates informatiques. Ils ont attaqué des sites et obtenu des bases de données contenant les vôtres, et les ont ensuite diffusées ou vendues sur le dark web. Mais pas de panique, nous sommes là pour vous aider !</p>";
     html += "<h3>Voici quelques étapes simples pour renforcer votre sécurité :</h3>";
     html += "<ol>";
     html += "<li><strong>Changez vos mots de passe</strong> sur les sites concernés. Optez pour des combinaisons uniques et robustes.</li>";
     html += "<li><strong>Évitez de réutiliser le même mot de passe</strong> sur différents sites. Chaque compte mérite sa propre clé secrète !</li>";
     html += "<li><strong>Activez la double authentification (2FA)</strong> là où c'est possible. Une couche de sécurité supplémentaire ne fait jamais de mal.</li>";
-    html += "<li><strong>Utilisez un gestionnaire de mots de passe</strong> pour vous souvenir de toutes vos nouvelles combinaisons.</li>";
+    html += "<li><strong>Utilisez un gestionnaire de mots de passe</strong> (voir la suite de nos ateliers pour plus d'informations).</li>";
+    html += "<li><strong>Restez vigilant</strong> face aux e-mails ou messages suspects. Si quelque chose semble trop beau pour être vrai, méfiez-vous !</li>";
+    html += "</ol>";
+    resultDiv.innerHTML = html;
+}
+
+// Nouvelle fonction pour afficher le résultat spécifique à Guy Liguili
+function displayGuyLiguiliResult() {
+    const resultDiv = document.getElementById('result');
+    let html = `<h2>🪈 Flûte ! Votre adresse e-mail est apparue dans plusieurs fuites de données.</h2>`;
+    html += "<p>Voici un exemple des informations compromises :</p>";
+    html += "<div style='background-color: #ffe6e6; padding: 1rem; border-radius: 5px;'>";
+    html += "<p><strong>Adresse e-mail :</strong> guy.liguili@goodenough.fr</p>";
+    html += "<p><strong>Adresse :</strong> 123 Rue Imaginaire, 75000 Paris</p>";
+    html += "<p><strong>Numéro de carte de crédit :</strong> 5123 4589 0973 7643</p>";
+    html += "<p style='font-size: 1.5rem; color: red;'><strong>Mot de passe :</strong> Mozart</p>";
+    html += "</div>";
+    html += "<h3>Que se passe-t-il ?</h3>";
+    html += "<p>Cela signifie que vos informations ont fait partie du butin de pirates informatiques. Ils ont attaqué des sites et obtenu des bases de données contenant les vôtres, et les ont ensuite diffusées ou vendues sur le dark web. Mais pas de panique, nous sommes là pour vous aider !</p>";
+    html += "<h3>Voici quelques étapes simples pour renforcer votre sécurité :</h3>";
+    html += "<ol>";
+    html += "<li><strong>Changez vos mots de passe</strong> sur les sites concernés. Optez pour des combinaisons uniques et robustes.</li>";
+    html += "<li><strong>Évitez de réutiliser le même mot de passe</strong> sur différents sites. Chaque compte mérite sa propre clé secrète !</li>";
+    html += "<li><strong>Activez la double authentification (2FA)</strong> là où c'est possible. Une couche de sécurité supplémentaire ne fait jamais de mal.</li>";
+    html += "<li><strong>Utilisez un gestionnaire de mots de passe</strong> (voir la suite de nos ateliers pour plus d'informations).</li>";
     html += "<li><strong>Restez vigilant</strong> face aux e-mails ou messages suspects. Si quelque chose semble trop beau pour être vrai, méfiez-vous !</li>";
     html += "</ol>";
     resultDiv.innerHTML = html;
