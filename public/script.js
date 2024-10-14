@@ -2,30 +2,41 @@ async function checkEmail() {
     const email = document.getElementById('emailInput').value;
     const resultDiv = document.getElementById('result');
     
+    if (!email) {
+        resultDiv.innerHTML = "<p>Veuillez entrer une adresse e-mail valide.</p>";
+        return;
+    }
+
     resultDiv.innerHTML = "<p>Vérification en cours...</p>";
     
-    try {
-        const response = await fetch('/api/check-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: email })
-        });
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
-        const data = await response.json();
-        
-        if (data.breaches && data.breaches.length > 0) {
-            displayResult(data.breaches);
-        } else {
-            resultDiv.innerHTML = "<p>Bonne nouvelle ! Votre adresse e-mail n'a pas été trouvée dans les fuites de données connues.</p>";
-        }
-    } catch (error) {
-        console.error('Erreur:', error);
-        resultDiv.innerHTML = "<p>Une erreur s'est produite lors de la vérification. Veuillez réessayer plus tard.</p>";
+    // Guy Liguili blooper
+    if (email.toLowerCase() === 'guy.liguili@example.com') {
+        resultDiv.innerHTML = "<p>Oh non, Guy ! Votre mot de passe 'mozart' a été compromis dans 42 fuites de données ! 🎵🎹</p>";
+        updateStats(email);
+        return;
+    }
+
+    const hasBreaches = Math.random() < 0.7;  // 70% chance of having breaches
+    
+    if (hasBreaches) {
+        displayResult(generateFakeBreaches());
+    } else {
+        resultDiv.innerHTML = "<p>Bonne nouvelle ! Votre adresse e-mail n'a pas été trouvée dans les fuites de données connues.</p>";
     }
 
     updateStats(email);
+}
+
+function generateFakeBreaches() {
+    const breachNames = ['DataLeak', 'CredentialStuffing', 'AccountHack', 'SecurityBreach'];
+    const numBreaches = Math.floor(Math.random() * 3) + 1;
+    return Array.from({length: numBreaches}, () => ({
+        Name: breachNames[Math.floor(Math.random() * breachNames.length)],
+        BreachDate: `${2020 + Math.floor(Math.random() * 4)}-${String(Math.floor(Math.random() * 12) + 1).padStart(2, '0')}-${String(Math.floor(Math.random() * 28) + 1).padStart(2, '0')}`
+    }));
 }
 
 function displayResult(breaches) {
