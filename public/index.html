@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vérifiez vos fuites de données - Heroku</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Vérifiez vos fuites de données - Heroku</h1>
+    <p>Entrez votre adresse e-mail personnelle pour vérifier si elle a été compromise dans des fuites de données connues. <span class="warning">N'utilisez pas votre adresse e-mail professionnelle pour ce test.</span></p>
+    <input type="email" id="emailInput" placeholder="Votre adresse e-mail">
+    <button onclick="checkEmail()">Vérifier</button>
+    <div id="result"></div>
+    <div class="stats">
+        <p>Nombre d'adresses uniques testées : <span id="uniqueCount">0</span></p>
+        <p>Record du nombre de fuites : <span id="leakRecord">0</span></p>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>
