@@ -2,8 +2,8 @@
     "name": "haveibeenpwnedinator",
     "version": "1.0.0",
     "engines": {
-      "node": "14.x",
-      "npm": "6.x"
+      "node": "22.9.X",
+      "npm": "10.8.X"
     },
     "scripts": {
       "start": "node server.js"
