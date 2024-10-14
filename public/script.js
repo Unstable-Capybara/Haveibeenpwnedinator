@@ -88,7 +88,7 @@ function displayGuyLiguiliResult() {
     html += "<p style='font-size: 1.5rem; color: red;'><strong>Mot de passe :</strong> Mozart</p>";
     html += "</div>";
     html += "<h3>Que se passe-t-il ?</h3>";
-    html += "<p>Cela signifie que vos informations ont fait partie du butin de pirates informatiques. Ils ont attaqué des sites et obtenu des bases de données contenant les vôtres, et les ont ensuite diffusées ou vendues sur le dark web. Mais pas de panique, nous sommes là pour vous aider !</p>";
+    html += "<p>Certaines de vos données personnelles (email, mot de passe, coordonnées) ont été compromises lors d'une cyberattaque sur un site où vous êtes inscrit(e). Ces informations circulent probablement sur le dark web à présent. C'est une situation sérieuse, mais pas de panique : nous sommes là pour vous accompagner !</p>";
     html += "<h3>Voici quelques étapes simples pour renforcer votre sécurité :</h3>";
     html += "<ol>";
     html += "<li><strong>Changez vos mots de passe</strong> sur les sites concernés. Optez pour des combinaisons uniques et robustes.</li>";
