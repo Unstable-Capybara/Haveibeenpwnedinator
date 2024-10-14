@@ -3,11 +3,11 @@ async function checkEmail() {
     const resultDiv = document.getElementById('result');
     
     if (!email) {
-        resultDiv.innerHTML = "<p>Veuillez entrer une adresse e-mail valide.</p>";
+        resultDiv.innerHTML = "<p>Oups ! Il semble que l'adresse e-mail entrée ne soit pas valide. Pourriez-vous vérifier ?</p>";
         return;
     }
 
-    resultDiv.innerHTML = "<p>Vérification en cours...</p>";
+    resultDiv.innerHTML = "<p>Nous vérifions discrètement en coulisses...</p>";
 
     try {
         const response = await fetch('/check-email', {
@@ -26,44 +26,44 @@ async function checkEmail() {
                 displayResult(breaches);
                 updateStats(email, breaches.length);
             } else {
-                resultDiv.innerHTML = "<p>Bonne nouvelle ! Votre adresse e-mail n'a pas été trouvée dans les fuites de données connues.</p>";
+                resultDiv.innerHTML = "<p>🎉 Bonne nouvelle ! Votre adresse e-mail n'apparaît dans aucune fuite de données connue. Continuez à naviguer en toute sérénité !</p>";
                 updateStats(email, 0);
             }
         } else if (response.status === 429) {
-            resultDiv.innerHTML = "<p>Trop de requêtes ! Veuillez réessayer plus tard.</p>";
+            resultDiv.innerHTML = "<p>Vous êtes trop rapide pour nous ! Veuillez patienter quelques instants avant de réessayer.</p>";
         } else if (response.status === 400) {
-            resultDiv.innerHTML = "<p>Requête invalide. Vérifiez l'adresse e-mail fournie.</p>";
+            resultDiv.innerHTML = "<p>Oups ! Une erreur s'est produite. Veuillez vérifier l'adresse e-mail fournie.</p>";
         } else if (response.status === 401) {
-            resultDiv.innerHTML = "<p>Accès non autorisé. Veuillez contacter l'administrateur.</p>";
+            resultDiv.innerHTML = "<p>Il semble que nous ayons des difficultés techniques. Merci de réessayer plus tard.</p>";
         } else if (response.status === 503) {
             resultDiv.innerHTML = "<p>Service indisponible. Veuillez réessayer plus tard.</p>";
         } else {
-            resultDiv.innerHTML = "<p>Une erreur s'est produite lors de la vérification. Veuillez réessayer plus tard.</p>";
+            resultDiv.innerHTML = "<p>Oups ! Une erreur s'est produite. Veuillez réessayer dans quelques instants.</p>";
         }
     } catch (error) {
         console.error(error);
-        resultDiv.innerHTML = "<p>Une erreur s'est produite lors de la vérification. Veuillez réessayer plus tard.</p>";
+        resultDiv.innerHTML = "<p>Oups ! Une erreur s'est produite. Veuillez réessayer dans quelques instants.</p>";
     }
 }
 
 function displayResult(breaches) {
     const resultDiv = document.getElementById('result');
-    let html = "<h2>Résultats de la vérification</h2>";
-    html += `<p>Votre adresse e-mail a été trouvée dans <strong>${breaches.length}</strong> fuite(s) de données :</p>`;
+    let html = `<h2>😯 Attention ! Votre adresse e-mail est apparue dans <strong>${breaches.length}</strong> fuite(s) de données.</h2>`;
+    html += "<p>Voici les détails :</p>";
     html += "<ul>";
     breaches.forEach(breach => {
         html += `<li><strong>${breach.Title}</strong> (Date de la fuite : ${breach.BreachDate})</li>`;
     });
     html += "</ul>";
-    html += "<h3>Que signifient ces informations ?</h3>";
-    html += "<p>Ces résultats indiquent que votre adresse e-mail a été compromise dans une ou plusieurs fuites de données. Cela signifie que des informations associées à cette adresse (comme des mots de passe) pourraient être entre les mains de personnes malveillantes.</p>";
-    html += "<h3>Que devez-vous faire pour vous sécuriser ?</h3>";
+    html += "<h3>Que se passe-t-il ?</h3>";
+    html += "<p>Cela signifie que vos informations pourraient être accessibles à des personnes mal intentionnées. Mais pas de panique, nous sommes là pour vous guider !</p>";
+    html += "<h3>Voici quelques étapes simples pour renforcer votre sécurité :</h3>";
     html += "<ol>";
-    html += "<li>Changez immédiatement vos mots de passe sur tous les sites concernés.</li>";
-    html += "<li>Si vous avez utilisé le même mot de passe sur d'autres sites, changez-le également sur ces sites.</li>";
-    html += "<li>Activez l'authentification à deux facteurs (2FA) partout où c'est possible.</li>";
-    html += "<li>Utilisez un gestionnaire de mots de passe pour créer et stocker des mots de passe uniques et complexes pour chaque site.</li>";
-    html += "<li>Restez vigilant face aux tentatives de phishing ou d'escroquerie qui pourraient utiliser vos informations personnelles.</li>";
+    html += "<li><strong>Changez vos mots de passe</strong> sur les sites concernés. Optez pour des combinaisons uniques et robustes.</li>";
+    html += "<li><strong>Évitez de réutiliser le même mot de passe</strong> sur différents sites. Chaque compte mérite sa propre clé secrète !</li>";
+    html += "<li><strong>Activez la double authentification (2FA)</strong> là où c'est possible. Une couche de sécurité supplémentaire ne fait jamais de mal.</li>";
+    html += "<li><strong>Utilisez un gestionnaire de mots de passe</strong> pour vous souvenir de toutes vos nouvelles combinaisons.</li>";
+    html += "<li><strong>Restez vigilant</strong> face aux e-mails ou messages suspects. Si quelque chose semble trop beau pour être vrai, méfiez-vous !</li>";
     html += "</ol>";
     resultDiv.innerHTML = html;
 }
