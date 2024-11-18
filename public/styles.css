@@ -83,6 +83,12 @@ button:hover {
     margin-top: 0.5rem;
 }
 
+.note {
+    color: #374151a0;
+    font-weight: lighter;
+    margin-top: 0.5rem;
+}
+
 #result {
     margin-top: 2rem;
     padding: 1rem;

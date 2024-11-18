@@ -16,6 +16,24 @@ async function checkEmail() {
         updateStats(email, 5); // Supposons 5 fuites pour l'exemple
         return;
     }
+    // Vérification spécifique pour les nouvelles entrées
+    if (email.toLowerCase() === 'eleonore.ileosud@goodenough.fr') {
+        displayEleonoreResult();
+        updateStats(email, 1); // Simuler une fuite
+        return;
+    }
+
+    if (email.toLowerCase() === 'jean-paul.ochon@goodenough.fr') {
+        displayJeanPaulResult();
+        updateStats(email, 1); // Simuler une fuite
+        return;
+    }
+
+    if (email.toLowerCase() === 'sacha.cale@goodenough.fr') {
+        displaySachaResult();
+        updateStats(email, 1); // Simuler une fuite
+        return;
+    }
 
     try {
         const response = await fetch('/check-email', {
@@ -99,6 +117,53 @@ function displayGuyLiguiliResult() {
     html += "</ol>";
     resultDiv.innerHTML = html;
 }
+
+// Afficher les informations pour Éléonore Iléosud
+function displayEleonoreResult() {
+    const resultDiv = document.getElementById('result');
+    let html = `<h2>🕵️‍♀️ Résultats pour Éléonore Iléosud</h2>`;
+    html += "<p>Voici ce que nous avons trouvé :</p>";
+    html += "<ul>";
+    html += "<li><strong>Profession :</strong> Commerciale chez GoodEnough depuis 4 ans</li>";
+    html += "<li><strong>Animal :</strong> Un chat nommé Dadou</li>";
+    html += "<li><strong>Fan de Kpop :</strong> Groupe préféré : IVE</li>";
+    html += "<li><strong>Activité sur les réseaux sociaux :</strong> Interagit avec ses collègues sur Instagram</li>";
+    html += "<li><strong>Passion culinaire :</strong> Obsédée par les bagels</li>";
+    html += "<li style='color: red;'><strong>Mot de passe fuité :</strong> Zalando : Saumon+Avocat@Zalando</li>";
+    html += "</ul>";
+    resultDiv.innerHTML = html;
+}
+
+// Afficher les informations pour Jean-Paul Ochon
+function displayJeanPaulResult() {
+    const resultDiv = document.getElementById('result');
+    let html = `<h2>🕵️‍♂️ Résultats pour Jean-Paul Ochon</h2>`;
+    html += "<p>Voici ce que nous avons trouvé :</p>";
+    html += "<ul>";
+    html += "<li><strong>Profession :</strong> Développeur logiciel chez GoodEnough depuis 3 mois</li>";
+    html += "<li><strong>Réseaux sociaux :</strong> Peu présent, participe à des forums de programmation</li>";
+    html += "<li><strong>Vie personnelle :</strong> Père d'un fils nommé Paul, né le 21/02/2023</li>";
+    html += "<li><strong>Chaîne YouTube :</strong> Partage ses voyages</li>";
+    html += "<li style='color: red;'><strong>Mot de passe fuité :</strong> CandyCrush : P@ul-210223!</li>";
+    html += "</ul>";
+    resultDiv.innerHTML = html;
+}
+
+// Afficher les informations pour Sacha Cale
+function displaySachaResult() {
+    const resultDiv = document.getElementById('result');
+    let html = `<h2>🕵️ Résultats pour Sacha Cale</h2>`;
+    html += "<p>Voici ce que nous avons trouvé :</p>";
+    html += "<ul>";
+    html += "<li><strong>Profession :</strong> Producteur de valeurs chez GoodEnough depuis 2 ans</li>";
+    html += "<li><strong>Famille :</strong> Trois enfants : Anna, Lise et Mehdi</li>";
+    html += "<li><strong>Réseaux sociaux :</strong> Aucune présence</li>";
+    html += "<li><strong>Activité physique :</strong> Compte Strava très actif</li>";
+    html += "<li style='color: red;'><strong>Mot de passe fuité :</strong> Erreur : Trop robuste, impossible à craquer.</li>";
+    html += "</ul>";
+    resultDiv.innerHTML = html;
+}
+
 
 function updateStats(email, leakCount) {
     let uniqueEmails = JSON.parse(localStorage.getItem('uniqueEmails')) || [];
