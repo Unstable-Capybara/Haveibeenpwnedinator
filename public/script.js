@@ -94,75 +94,67 @@ function displayResult(breaches) {
     resultDiv.innerHTML = html;
 }
 
-// Nouvelle fonction pour afficher le résultat spécifique à Guy Liguili
 function displayGuyLiguiliResult() {
     const resultDiv = document.getElementById('result');
-    let html = `<h2>🪈 Flûte ! Votre adresse e-mail est apparue dans plusieurs fuites de données.</h2>`;
-    html += "<p>Voici un exemple des informations compromises :</p>";
+    let html = `<h2>🔍 Rapport d'analyse pour Guy Liguili</h2>`;
+    html += "<p><strong>Résumé :</strong> Plusieurs de vos données personnelles ont été exposées lors de fuites récentes. Une personne mal intentionnée pourrait exploiter ces informations, mais fort heureusement, ce n’est pas votre cas. 😉</p>";
     html += "<div style='background-color: #ffe6e6; padding: 1rem; border-radius: 5px;'>";
-    html += "<p><strong>Adresse e-mail :</strong> guy.liguili@goodenough.fr</p>";
-    html += "<p><strong>Adresse :</strong> 123 Rue Imaginaire, 75000 Paris</p>";
-    html += "<p><strong>Numéro de carte de crédit :</strong> 5123 4589 0973 7643</p>";
-    html += "<p style='font-size: 1.5rem; color: red;'><strong>Mot de passe :</strong> Mozart</p>";
+    html += "<h3>Données identifiées :</h3>";
+    html += "<ul>";
+    html += "<li><strong>Adresse e-mail :</strong> guy.liguili@goodenough.fr</li>";
+    html += "<li><strong>Adresse postale :</strong> 123 Rue Imaginaire, 75000 Paris</li>";
+    html += "<li><strong>Numéro de carte de crédit :</strong> 5123 4589 0973 7643</li>";
+    html += "<li style='color: red;'><strong>Mot de passe (LinkedIn):</strong> Mozart</li>";
+    html += "</ul>";
     html += "</div>";
-    html += "<h3>Que se passe-t-il ?</h3>";
-    html += "<p>Certaines de vos données personnelles (email, mot de passe, coordonnées) ont été compromises lors d'une cyberattaque sur un site où vous êtes inscrit(e). Ces informations circulent probablement sur le dark web à présent. C'est une situation sérieuse, mais pas de panique : nous sommes là pour vous accompagner !</p>";
-    html += "<h3>Voici quelques étapes simples pour renforcer votre sécurité :</h3>";
+    html += "<h3>Recommandations :</h3>";
     html += "<ol>";
-    html += "<li><strong>Changez vos mots de passe</strong> sur les sites concernés. Optez pour des combinaisons uniques et robustes.</li>";
-    html += "<li><strong>Évitez de réutiliser le même mot de passe</strong> sur différents sites. Chaque compte mérite sa propre clé secrète !</li>";
-    html += "<li><strong>Activez la double authentification (2FA)</strong> là où c'est possible. Une couche de sécurité supplémentaire ne fait jamais de mal.</li>";
-    html += "<li><strong>Utilisez un gestionnaire de mots de passe</strong> (voir la suite de nos ateliers pour plus d'informations).</li>";
-    html += "<li><strong>Restez vigilant</strong> face aux e-mails ou messages suspects. Si quelque chose semble trop beau pour être vrai, méfiez-vous !</li>";
+    html += "<li><strong>Changez immédiatement ce mot de passe</strong>, surtout si vous l’utilisez ailleurs.</li>";
+    html += "<li>Évitez de stocker des informations sensibles comme vos numéros de carte dans des comptes en ligne sans protection accrue.</li>";
+    html += "<li>Envisagez une surveillance de vos transactions bancaires pour détecter d'éventuelles activités frauduleuses.</li>";
     html += "</ol>";
     resultDiv.innerHTML = html;
 }
 
-// Afficher les informations pour Éléonore Iléosud
 function displayEleonoreResult() {
     const resultDiv = document.getElementById('result');
-    let html = `<h2>🕵️‍♀️ Résultats pour Éléonore Iléosud</h2>`;
-    html += "<p>Voici ce que nous avons trouvé :</p>";
+    let html = `<h2>🔍 Rapport d'analyse pour Éléonore Iléosud</h2>`;
     html += "<ul>";
-    html += "<li><strong>Profession :</strong> Commerciale chez GoodEnough depuis 4 ans</li>";
-    html += "<li><strong>Animal :</strong> Un chat nommé Dadou</li>";
-    html += "<li><strong>Fan de Kpop :</strong> Groupe préféré : IVE</li>";
-    html += "<li><strong>Activité sur les réseaux sociaux :</strong> Interagit avec ses collègues sur Instagram</li>";
-    html += "<li><strong>Passion culinaire :</strong> Obsédée par les bagels</li>";
-    html += "<li style='color: red;'><strong>Mot de passe fuité :</strong> Zalando : Saumon+Avocat@Zalando</li>";
+    html += "<li><strong>Adresse e-mail :</strong> eleonore.ileosud@goodenough.fr</li>";
+    html += "<li><strong>Activité professionnelle :</strong> Commerciale chez GoodEnough depuis 4 ans</li>";
+    html += "<li><strong>Centres d'intérêt :</strong> Fan de Kpop (IVE) et passionnée de bagels</li>";
+    html += "<li><strong>Activité sur les réseaux :</strong> Interagit fréquemment avec des collègues sur Instagram</li>";
+    html += "<li style='color: red;'><strong>Mot de passe (Zalando):</strong> Saumon+Avocat@Zalando</li>";
     html += "</ul>";
     resultDiv.innerHTML = html;
 }
 
-// Afficher les informations pour Jean-Paul Ochon
 function displayJeanPaulResult() {
     const resultDiv = document.getElementById('result');
-    let html = `<h2>🕵️‍♂️ Résultats pour Jean-Paul Ochon</h2>`;
-    html += "<p>Voici ce que nous avons trouvé :</p>";
+    let html = `<h2>🔍 Rapport d'analyse pour Jean-Paul Ochon</h2>`;
     html += "<ul>";
-    html += "<li><strong>Profession :</strong> Développeur logiciel chez GoodEnough depuis 3 mois</li>";
-    html += "<li><strong>Réseaux sociaux :</strong> Peu présent, participe à des forums de programmation</li>";
-    html += "<li><strong>Vie personnelle :</strong> Père d'un fils nommé Paul, né le 21/02/2023</li>";
-    html += "<li><strong>Chaîne YouTube :</strong> Partage ses voyages</li>";
-    html += "<li style='color: red;'><strong>Mot de passe fuité :</strong> CandyCrush : P@ul-210223!</li>";
+    html += "<li><strong>Adresse e-mail :</strong> jean-paul.ochon@goodenough.fr</li>";
+    html += "<li><strong>Activité professionnelle :</strong> Développeur logiciel chez GoodEnough depuis 3 mois</li>";
+    html += "<li><strong>Centres d'intérêt :</strong> Participe à des forums de programmation et partage ses voyages sur YouTube</li>";
+    html += "<li><strong>Vie privée :</strong> Père d’un fils nommé Paul, né le 21/02/2023</li>";
+    html += "<li style='color: red;'><strong>Mot de passe (CandyCrush):</strong> P@ul-210223!</li>";
     html += "</ul>";
     resultDiv.innerHTML = html;
 }
 
-// Afficher les informations pour Sacha Cale
 function displaySachaResult() {
     const resultDiv = document.getElementById('result');
-    let html = `<h2>🕵️ Résultats pour Sacha Cale</h2>`;
-    html += "<p>Voici ce que nous avons trouvé :</p>";
+    let html = `<h2>🔍 Rapport d'analyse pour Sacha Cale</h2>`;
     html += "<ul>";
-    html += "<li><strong>Profession :</strong> Producteur de valeurs chez GoodEnough depuis 2 ans</li>";
+    html += "<li><strong>Adresse e-mail :</strong> sacha.cale@goodenough.fr</li>";
+    html += "<li><strong>Activité professionnelle :</strong> Producteur de valeurs chez GoodEnough depuis 2 ans</li>";
+    html += "<li><strong>Centres d'intérêt :</strong> Très actif sur Strava</li>";
     html += "<li><strong>Famille :</strong> Trois enfants : Anna, Lise et Mehdi</li>";
-    html += "<li><strong>Réseaux sociaux :</strong> Aucune présence</li>";
-    html += "<li><strong>Activité physique :</strong> Compte Strava très actif</li>";
-    html += "<li style='color: red;'><strong>Mot de passe fuité :</strong> Erreur : Trop robuste, impossible à craquer.</li>";
+    html += "<li style='color: green;'><strong>Mot de passe (LinkedIn):</strong> Trop robuste, impossible à craquer.</li>";
     html += "</ul>";
     resultDiv.innerHTML = html;
 }
+
 
 
 function updateStats(email, leakCount) {
