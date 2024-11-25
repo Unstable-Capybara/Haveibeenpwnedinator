@@ -115,6 +115,20 @@ button:hover {
     color: var(--primary-color);
 }
 
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem; /* Ajoute un espacement au-dessus de l'image */
+}
+
+.image-container img {
+    max-width: 100%; /* S'assure que l'image ne dépasse pas la largeur de son conteneur */
+    height: auto; /* Maintient les proportions de l'image */
+    border-radius: 10px; /* Coins arrondis pour un aspect plus agréable */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Effet d'ombre pour l'image */
+}
+
+
 @media (max-width: 600px) {
     .email-input {
         flex-direction: column;

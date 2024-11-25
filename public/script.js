@@ -120,12 +120,21 @@ function displayEleonoreResult() {
     const resultDiv = document.getElementById('result');
     let html = `<h2>🔍 Rapport d'analyse pour Éléonore Iléosud</h2>`;
     html += "<ul>";
-    html += "<li><strong>Adresse e-mail :</strong> eleonore.ileosud@goodenough.fr</li>";
+    html += "<li><strong>Adresse e-mail professionnelle :</strong> eleonore.ileosud@goodenough.fr</li>";
     html += "<li><strong>Activité professionnelle :</strong> Commerciale chez GoodEnough depuis 4 ans</li>";
-    html += "<li><strong>Centres d'intérêt :</strong> Fan de Kpop (IVE) et passionnée de bagels</li>";
+    html += "<li><strong>Centres d'intérêt :</strong> Fan de Kpop (groupe préféré : IVE) et passionnée de bagels</li>";
+    html += "<li><strong>Animaux de compagnie :</strong> possède un chat : Dadou</li>";
     html += "<li><strong>Activité sur les réseaux :</strong> Interagit fréquemment avec des collègues sur Instagram</li>";
-    html += "<li style='color: red;'><strong>Mot de passe (Zalando):</strong> Saumon+Avocat@Zalando</li>";
+    html += "<li style='color: red;'><strong>Mot de passe :</strong> Le mot de passe d'Eleonore était dans la fuite de données de Linkedin en 2016. Son mot de passe (chiffré) était :</li>";
     html += "</ul>";
+
+    // Ajout de l'image
+    html += `
+        <div class="image-container">
+            <img src="/src/CapchaEleonore.png" alt="Illustration du profil d'Éléonore">
+        </div>
+    `;
+
     resultDiv.innerHTML = html;
 }
 
@@ -137,8 +146,15 @@ function displayJeanPaulResult() {
     html += "<li><strong>Activité professionnelle :</strong> Développeur logiciel chez GoodEnough depuis 3 mois</li>";
     html += "<li><strong>Centres d'intérêt :</strong> Participe à des forums de programmation et partage ses voyages sur YouTube</li>";
     html += "<li><strong>Vie privée :</strong> Père d’un fils nommé Paul, né le 21/02/2023</li>";
-    html += "<li style='color: red;'><strong>Mot de passe (CandyCrush):</strong> P@ul-210223!</li>";
+    html += "<li style='color: red;'><strong>Mot de passe :</strong> Le mot de passe de Jean-Paul était dans la fuite de données de Dropbox en 2012, son mot de passe (chiffré) était :</li>";
     html += "</ul>";
+        // Ajout de l'image
+        html += `
+        <div class="image-container">
+            <img src="/src/CapchaJeanPaul.png" alt="Illustration du profil de Jean-Paul">
+        </div>
+    `;
+
     resultDiv.innerHTML = html;
 }
 
@@ -150,8 +166,14 @@ function displaySachaResult() {
     html += "<li><strong>Activité professionnelle :</strong> Producteur de valeurs chez GoodEnough depuis 2 ans</li>";
     html += "<li><strong>Centres d'intérêt :</strong> Très actif sur Strava</li>";
     html += "<li><strong>Famille :</strong> Trois enfants : Anna, Lise et Mehdi</li>";
-    html += "<li style='color: green;'><strong>Mot de passe (LinkedIn):</strong> Trop robuste, impossible à craquer.</li>";
+    html += "<li style='color: red;'><strong>Mot de passe :</strong> Le mot de passe de Sacha était dans la fuite de données de Shein en 2018, son mot de passe (chiffré) était le suivant. Il semble que Sacha utilise un gestionnaire de mots de passe, ce mot de passe sera très difficile à déchiffrer et il est peu probable que Sacha réutilise ce mot de passe ailleurs :</li>";
     html += "</ul>";
+        // Ajout de l'image
+        html += `
+        <div class="image-container">
+            <img src="/src/CapchaSacha.png" alt="Illustration du profil de Sacha">
+        </div>
+    `;
     resultDiv.innerHTML = html;
 }
 
