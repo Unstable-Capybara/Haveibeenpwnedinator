@@ -1,3 +1,11 @@
+// Fonction pour lancer la vérification avec la touche Entrée
+document.getElementById('emailInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        checkEmail();
+    }
+});
+
+
 async function checkEmail() {
     const email = document.getElementById('emailInput').value;
     const resultDiv = document.getElementById('result');
@@ -31,6 +39,12 @@ async function checkEmail() {
 
     if (email.toLowerCase() === 'sacha.cale@goodenough.fr') {
         displaySachaResult();
+        updateStats(email, 1); // Simuler une fuite
+        return;
+    }
+
+    if (email.toLowerCase() === 'aby.cyclette@goodenough.fr') {
+        displayAbyResult();
         updateStats(email, 1); // Simuler une fuite
         return;
     }
@@ -132,6 +146,29 @@ function displayEleonoreResult() {
     html += `
         <div class="image-container">
             <img src="/src/CapchaEleonore.png" alt="Illustration du profil d'Éléonore">
+        </div>
+    `;
+
+    resultDiv.innerHTML = html;
+}
+
+function displayAbyResult() {
+    const resultDiv = document.getElementById('result');
+    let html = `<h2>🔍 Rapport d'analyse pour Aby Cyclette</h2>`;
+    html += "<ul>";
+    html += "<li><strong>Adresse e-mail professionnelle :</strong> aby.cyclette@goodenough.fr</li>";
+    html += "<li><strong>Activité professionnelle :</strong> Chargée de logistique chez GoodEnough depuis 5 ans</li>";
+    html += "<li><strong>Centres d'intérêt :</strong> Fan de vélo (fait du cyclisme amateur) et collectionneuse de timbres vintage</li>";
+    html += "<li><strong>Animaux de compagnie :</strong> possède un chien : Rocky</li>";
+    html += "<li><strong>Activité sur les réseaux :</strong> Partage des photos de ses randonnées sur Twitter et Instagram</li>";
+    html += "<li style='color: red;'><strong>Mot de passe :</strong> Le mot de passe d'Aby était dans la fuite de données de Strava en 2019. Son mot de passe (chiffré) était :</li>";
+    html += "</ul>";
+    
+
+    // Ajout de l'image
+    html += `
+        <div class="image-container">
+            <img src="/src/CaptchaAby.png" alt="Illustration du profil d'Aby">
         </div>
     `;
 
