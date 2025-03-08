@@ -49,6 +49,12 @@ async function checkEmail() {
         return;
     }
 
+    if (email.toLowerCase() === 'micheline.dupont@goodenough.fr') {
+        displayMichelineResult();
+        updateStats(email, 1); // Simuler une fuite
+        return;
+    }
+
     try {
         const response = await fetch('/check-email', {
             method: 'POST',
@@ -214,7 +220,27 @@ function displaySachaResult() {
     resultDiv.innerHTML = html;
 }
 
+function displayMichelineResult() {
+    const resultDiv = document.getElementById('result');
+    let html = `<h2>🔍 Rapport d'analyse pour Micheline Dupont</h2>`;
+    html += "<ul>";
+    html += "<li><strong>Adresse e-mail professionnelle :</strong> micheline.dupont@goodenough.fr</li>";
+    html += "<li><strong>Activité professionnelle :</strong> Comptable chez GoodEnough depuis 3 ans</li>";
+    html += "<li><strong>Centres d'intérêt :</strong> Fan de Harley Davidson, cuisine italienne, et adepte des sudoku en ligne</li>";
+    html += "<li><strong>Animaux de compagnie :</strong> possède un pigeon nommé Ponpon, régulièrement mis à l'honneur sur les réseaux</li>";
+    html += "<li><strong>Activité sur les réseaux :</strong> Partage de photos humoristiques de Ponpon sur Twitter et Instagram</li>";
+    html += "<li style='color: red;'><strong>Mot de passe :</strong> Le mot de passe de Micheline a été compromis dans la fuite de données LinkedIn en 2016. Le hash de son mot de passe figurait dans les fichiers divulgués, voici la version chiffrée du mot de passe ayant fuité :</li>";
+    html += "</ul>";
 
+    // Illustration (on peut remplacer l'image par un visuel dédié à Ponpon)
+    html += `
+        <div class="image-container">
+            <img src="/src/CapchaMicheline.png" alt="Mot de passe fuité de Micheline">
+        </div>
+    `;
+
+    resultDiv.innerHTML = html;
+}
 
 function updateStats(email, leakCount) {
     let uniqueEmails = JSON.parse(localStorage.getItem('uniqueEmails')) || [];
